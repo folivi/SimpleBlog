@@ -10,4 +10,8 @@ class Article < ActiveRecord::Base
   
   scope :published, -> { where(draft: false) }
   scope :latest, ->{ order('created_at asc')}
+  
+  def publication_date
+    self.created_at.to_formatted_s(:long_ordinal)
+  end
 end

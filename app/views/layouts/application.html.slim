@@ -27,7 +27,7 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand href="/"Ablog
+          =link_to "Blog!", root_url, class: 'navbar-brand'
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav.pull-right
               li= link_to "Articles", articles_url
@@ -38,13 +38,9 @@ html lang="en"
 								li= link_to 'Log in', new_user_session_path
 
     .container
-      .row
-        .col-lg-9
-          = bootstrap_flash
-          = yield
-        .col-lg-3
-          .well.sidebar-nav
-						ul=content_for :sidebar
-
-      footer
-        p &copy; Company 2014
+			.row
+				.col-lg-8
+					= bootstrap_flash
+					= yield
+				.col-lg-4
+					==render 'sidebar'

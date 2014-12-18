@@ -29,7 +29,7 @@ Devise.setup do |config|
 
   
   config.sign_out_via = :delete
-
+  config.secret_key = '9d09e98d8ddd53369053ca19e06f0928f60ba84cac0498f3822a7b17efe008ac057766bcb44df0ff8bfbf5c8d8d84874469c947fc424f8cb76500b81b18b014c'
 
   config.omniauth :facebook, '1575700879330278', 'e4b9cc2b48da619348643186e27b8a4e', scope: 'email' 
   config.stretches = Rails.env.test? ? 1 : 10

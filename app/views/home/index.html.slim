@@ -1,19 +1,21 @@
-.jumbotron
-	h1 Welcome to the Blog!
-.page-header
-	h2 Latest hot topics
-.row
-	-for article in @hottest_topics
-		.col-md-4
-			.thumbnail
-				img(src=article.image)
-				.caption
-					h4= link_to article.title, article
-					p=article.content
-					-if user_signed_in? && current_user.owns_article?(article)
-						=link_to 'Edit', edit_article_path(article), class: 'btn btn-primary'
-						
-				
-=content_for :sidebar do
-	-for article in @articles
-		li=link_to article.title, article
+==render "home_content"
+
+/ .jumbotron
+/ 	h1 Welcome to the Blog!
+/ .page-header
+/ 	h2 Latest hot topics
+/ .row
+/ 	-for article in @hottest_topics
+/ 		.col-md-4
+/ 			.thumbnail
+/ 				img(src=article.image)
+/ 				.caption
+/ 					h4= link_to article.title, article
+/ 					p=article.content
+/ 					-if user_signed_in? && current_user.owns_article?(article)
+/ 						=link_to 'Edit', edit_article_path(article), class: 'btn btn-primary'
+/ 						
+/ 				
+/ =content_for :sidebar do
+/ 	-for article in @articles
+/ 		li=link_to article.title, article

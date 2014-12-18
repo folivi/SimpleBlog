@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'articles#index'
 
   resources :comments, except: :index do 
     member do
@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :tags
-
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 end
