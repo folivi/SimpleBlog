@@ -1,0 +1,19 @@
+<!-- Comment -->
+  <div class="media">
+      <a class="pull-left" href="#">
+          <%= image_tag comment.user.picture unless comment.user.uid.nil? %>
+      </a>
+      <div class="media-body">
+          <h4 class="media-heading"><%= comment.user.name %>
+              <small><%= comment.publication_date %></small>
+          </h4>
+          <%= comment.content %>
+					<%-if current_user && current_user.owns_article?(comment.article) %>
+						<%- unless comment.approved %>
+							<%= link_to 'Approve', togge_approval_comment_path(comment), class: 'btn btn-xs btn-success', method: :post %>
+							<% else %>
+							<%= link_to 'Reject', togge_approval_comment_path(comment), class: 'btn btn-xs btn-danger', method: :post %>
+						<% end %>
+					<% end %>
+      </div>
+  </div>

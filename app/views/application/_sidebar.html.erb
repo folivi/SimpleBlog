@@ -1,0 +1,33 @@
+<div class='well'>
+	<center><%= link_to 'New article', new_article_path, class: 'btn btn-default' %></center>
+</div>
+
+<div class='well'>
+	<h4>Search</h4>
+	<%= form_tag '/articles', class: 'form-horizontal', method: :get do %>
+		<div class='form-group'>
+			<%=label_tag 'by title', nil, class: 'col-sm-3 control-label' %>
+			<div class='col-sm-9'>
+				<%= text_field_tag 'article[title]', nil, value: "#{params[:article][:title] if params[:article]}"	%>
+			</div>
+		</div>
+		<div class='form-group'>
+			<%=label_tag 'content', nil, class: 'col-sm-3 control-label' %>
+			<div class='col-sm-9'>
+				<%= text_field_tag 'article[content]', nil, value: "#{params[:article][:content] if params[:article]}"	%>
+			</div>
+		</div>
+		<div class='form-group'>
+			<%=label_tag 'tags', nil, class: 'col-sm-3 control-label' %>
+			<div class='col-sm-9'>
+				<%= collection_check_boxes :article, :tag_ids, Tag.all, :id, :name do |tag|	%>
+				<span><%= tag.check_box(checked: params[:article] && params[:article][:tag_ids].include?(tag.object.id.to_s)) %></span>
+				<span><%= tag.object.name %></span>
+				<% end %>
+			</div>
+		</div>
+		<div class='form-action'>
+			<%= submit_tag "search", class: 'btn btn-default' %>
+		</div>
+	<% end %>									
+</div>                
