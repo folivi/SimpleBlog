@@ -19,7 +19,7 @@ gem 'rspec-rails', group: [:development, :test]
 #gem 'rspec-rails', group: [:development, :test]
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 gem 'friendly_id'
 gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
