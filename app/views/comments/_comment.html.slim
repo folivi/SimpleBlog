@@ -1,0 +1,9 @@
+li.list-group-item.comment
+	span.comment-content= comment.content
+	span.comment-author= "by #{comment.user.name}"
+	-if current_user && current_user.owns_article?(comment.article)
+		span.owner-actions.pull-right
+			- unless comment.approved 
+				= link_to 'Approve', togge_approval_comment_path(comment), class: 'btn btn-xs btn-success', method: :post
+			- else
+				= link_to 'Reject', togge_approval_comment_path(comment), class: 'btn btn-xs btn-danger', method: :post

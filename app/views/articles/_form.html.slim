@@ -1,0 +1,28 @@
+= form_for @article, html: { class: "form form-horizontal article" } do |f|
+  .form-group
+    = f.label :title, :class => 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_field :title, :class => 'form-control'
+      = error_span(@article[:title])
+  .form-group
+    = f.label :content, :class => 'control-label col-sm-2'
+    .col-sm-10
+      = f.text_area :content, :class => 'form-control', rows: 12
+    = error_span(@article[:content])
+  .form-group
+    = f.label :image, :class => 'control-label col-sm-2'
+    .col-sm-10
+      = f.file_field :image
+    = error_span(@article[:image])
+  .form-group
+    = f.label :draft, :class => 'control-label col-sm-2'
+    .col-sm-10
+      = f.check_box :draft
+    = error_span(@article[:draft])  
+  .form-group
+    = f.label :tags, :class => 'control-label col-sm-2'
+    .col-sm-10
+      = f.collection_check_boxes :tag_ids, Tag.all, :id, :name
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn'

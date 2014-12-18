@@ -1,0 +1,8 @@
+- unless user_signed_in?
+	p Signin/up to add comments
+- else
+	.article-comment-form
+		.comment-content
+			=form_for [@article, Comment.new] do |f|
+				=f.text_area :content, class: 'form-control', placeholder: 'add comment'
+				=f.submit'Save', class:'btn btn-success'

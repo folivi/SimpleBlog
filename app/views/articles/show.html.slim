@@ -1,0 +1,31 @@
+=content_for :sidebar do
+  -for article in @latest_articles.published
+    li=link_to article.title, article
+.row
+	.col-md-4
+	.col-md-4
+		.article-image
+			=image_tag(@article.image.blank? ? @article.user.picture : @article.image ) 
+	.col-md-4		
+.row
+	.panel.panel-default
+		.panel-heading
+			span= @article.title
+			span.badge.pull-right= "by #{@article.user.try(:name)}"
+		.panel-body
+			=@article.content
+		.panel-footer
+			span tags
+			span.badge= @article.tags.pluck(:name).join(', ')
+p 
+  b Comments
+.well.comments  
+  -unless @article.comments.empty? 
+		ul.list-group
+			- if current_user && current_user.owns_article?(@article) 
+				== render @article.comments
+			- else
+				== render @article.comments.approved
+
+== render 'create_comment'
+== render 'owner_actions' if user_signed_in? && current_user.owns_article?(@article)
