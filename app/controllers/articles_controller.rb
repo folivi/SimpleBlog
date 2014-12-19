@@ -2,8 +2,8 @@ class ArticlesController < ApplicationController
   #include ActionController::Live
 
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!, only: [:new, :edit, :update, :create]
-  #before_action :check_owner, only: [:edit] #seul l'auteur peut modifier l'article
+  before_action :authenticate_user!, only: [:new, :edit, :update, :create]
+  before_action :check_owner, only: [:edit] #seul l'auteur peut modifier l'article
 
   respond_to :html, :json, :js
 
