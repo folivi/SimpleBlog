@@ -34,9 +34,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    puts params.inspect
-    $redis.publish('comments.new', @article.to_json)
-
     @article = Article.new(article_params)
     current_user.articles << @article    
     respond_with(@article)
