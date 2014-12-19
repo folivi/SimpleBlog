@@ -4,10 +4,10 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_author, only: [:edit, :destroy, :update]
 
-  respond_to :html
+  respond_to :html, :json, :js
 
   def index
-    @comments = Comment.all
+    @comments = Comment.all        
     respond_with(@comments)
   end
 
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
       com.approved = true if current_user == @article.user #on valide automatiquement si le créateur de l'article commente
     end
     @article.comments << comment
-
+    $redis.publish('comments.new', @comment.to_json)
     respond_with(@article)
   end
 

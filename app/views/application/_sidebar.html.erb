@@ -14,7 +14,7 @@
 		<div class='form-group'>
 			<%=label_tag 'content', nil, class: 'col-sm-3 control-label' %>
 			<div class='col-sm-9'>
-				<%= text_field_tag 'article[content]', nil, value: "#{params[:article][:content] if params[:article]}"	%>
+				<%= text_field_tag 'article[text]', nil, value: "#{params[:article][:text] if params[:article]}"	%>
 			</div>
 		</div>
 		<div class='form-group'>

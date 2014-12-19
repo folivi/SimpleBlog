@@ -18,7 +18,7 @@
 			<%= image_tag article.image.blank? ? 'http://placehold.it/900x300' : article.image, class: 'img-responsive' %>
 	 	</div>									
 	 	<hr>
-	 	<p><%= article.content %></p>
+	 	<p><%= raw truncate(article.content, length: 90) %></p>
 	 	<%= link_to 'read more', article, class: 'btn btn-primary' %>
 	 	<hr>	
 		<% end %>    

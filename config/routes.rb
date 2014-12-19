@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
   end
   resources :articles do
+    collection{ get :events} 
     resources :comments
   end
   resources :tags

@@ -24,6 +24,9 @@ gem 'friendly_id'
 gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
 gem 'less-rails'
+gem 'ckeditor'
+gem 'redis'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
