@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
       com.approved = true if current_user == @article.user #on valide automatiquement si le créateur de l'article commente
     end
     @article.comments << comment
-    $redis.publish('comments.new', @comment.to_json)
+    #$redis.publish('comments.new', @comment.to_json) #pas encore implémenté
     respond_with(@article)
   end
 
