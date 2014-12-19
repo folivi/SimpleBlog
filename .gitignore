@@ -13,8 +13,6 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
-=======
 *.rbc
 capybara-*.html
 .rspec
@@ -31,7 +29,7 @@ pickle-email-*.html
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 config/secrets.yml
-
+config/initializers/devise.rb
 ## Environment normalisation:
 /.bundle
 /vendor/bundle
