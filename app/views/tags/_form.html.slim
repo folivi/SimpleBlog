@@ -1,18 +1,19 @@
-= form_for @tag do |f|
-  - if @tag.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@tag.errors.count, "error")} prohibited this tag from being saved:"
-      ul
-        - @tag.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :label
-    = f.text_field :label
-  .field
-    = f.label :description
-    = f.text_field :description
-  .actions = f.submit 'Save'
+= form_for @tag, html: { class: "form form-horizontal tag" } do |f|
+  .form-group
+    = f.label :name, :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control'
+    = error_span(@tag[:name])
+  .form-group
+    = f.label :label, :class => 'control-label'
+    .controls
+      = f.text_field :label, :class => 'form-control'
+    = error_span(@tag[:label])
+  .form-group
+    = f.label :description, :class => 'control-label'
+    .controls
+      = f.text_field :description, :class => 'form-control'
+    = error_span(@tag[:description])
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), tags_path, :class => 'btn'

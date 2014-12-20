@@ -32,7 +32,8 @@ html lang="en"
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav.pull-right
               li(class="#{set_as_active('articles')}")= link_to "Articles", articles_url              
-              -if user_signed_in?                
+              -if user_signed_in?
+                li(class="#{set_as_active('tags')}") = link_to 'Tags', tags_url
                 li(class="#{set_as_active('devise/registrations')}")= link_to "My account", edit_user_registration_path
                 '
                 li= link_to "Logout", destroy_user_session_path, method: :delete
