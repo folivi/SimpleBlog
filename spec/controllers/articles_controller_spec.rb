@@ -1,8 +1,15 @@
 require 'rails_helper'
-
+class User
+  def owns_article?(article)
+    true
+  end
+end
 
 RSpec.describe ArticlesController, :type => :controller do
-  #login_user
+  login_user
+
+  # let(:user){ {name: 'test user', email: 'test@user.com', encrypted_password: '$2a$10$5qlOIpmoRezPsjztlysun.2q23yEJyzFLs1iry.ZOUVtAe4UDQU2i'} }
+  # before { controller.stub(:current_user) { user }}
 
   let(:valid_attributes) {
     {title: 'this is not a test', content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione assumenda vitae officia obcaecati, qui cumque, vel? Nihil quidem vitae eos. Nemo, id perspiciatis odit officiis, quae harum nulla pariatur qui.', image: 'http://placehold.it/900x300', draft: true}

@@ -5,17 +5,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :articles
-  
-  def self.from_omniauth(auth)
-    puts "auth.credentials.to_json #{auth.credentials.to_json}"
-    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
-    	puts "user #{user.inspect}"
+  has_many :articles  
+  def self.from_omniauth(auth)    
+    where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|    	
       user.email = auth.info.email
       user.name  = auth.info.name
       user.password = Devise.friendly_token[0,20]
       user.picture 	 = auth.info.image      
     end
+  end
+  def fb_user?
+    !self.uid.nil?
   end
     
   def owns_article?(article)

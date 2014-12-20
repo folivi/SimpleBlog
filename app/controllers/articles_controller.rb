@@ -9,9 +9,9 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.includes(:tags)
-      if request.get?
+    if request.get? # pour aller vite. Le search se fait en get
       unless params[:article].nil?
-        puts params[:article][:tag_ids] = params[:article][:tag_ids].delete_if {|param| param.empty?}# .any?(&:empty?)
+        puts params[:article][:tag_ids] = params[:article][:tag_ids].delete_if {|param| param.empty?}
         @articles = @articles.where("lower(title) like ?", "%#{params[:article][:title].downcase}%") unless params[:article][:title].blank?
         @articles = @articles.where("lower(content) like ?", "%#{params[:article][:text].downcase}%") unless params[:article][:text].blank?
         @articles = @articles.where('tags.id' => params[:article][:tag_ids].to_a ) unless params[:article][:tag_ids].nil?

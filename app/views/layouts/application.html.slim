@@ -28,17 +28,19 @@ html lang="en"
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          =link_to "Blog!", "#", class: 'navbar-brand'
+          =link_to "Blog!", root_url, class: 'navbar-brand'
           .navbar-collapse.collapse.navbar-responsive-collapse
             ul.nav.navbar-nav.pull-right
-              li(class="#{set_as_active('articles')}")= link_to "Articles", articles_url
-              -if user_signed_in?
-	 							li= link_to 'logout', destroy_user_session_path, method: :delete
+              li(class="#{set_as_active('articles')}")= link_to "Articles", articles_url              
+              -if user_signed_in?                
+                li(class="#{set_as_active('devise/registrations')}")= link_to "My account", edit_user_registration_path
+                '
+                li= link_to "Logout", destroy_user_session_path, method: :delete
               -else
-								li= link_to 'Log in', new_user_session_path
+								li(class="#{set_as_active('devise/sessions')}")= link_to 'Log in', new_user_session_path
 
     .container
-			.row
+			.row        
 				.col-lg-8
 					= bootstrap_flash
 					= yield
