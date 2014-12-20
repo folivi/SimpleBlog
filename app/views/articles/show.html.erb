@@ -11,6 +11,8 @@
     <hr>
     <p class="lead"><%=raw @article.content %></p>
     <hr>
+    <div><%= render "article_owner_actions", {article: @article} %></div>
+    <hr>
     <div class="well">
       <% if user_signed_in? %>
         <h4>Leave a Comment:</h4>
@@ -37,5 +39,6 @@
     <% else %>
       <b>No comments, yet</b>
     <% end %>
+
   </div>            
 </div>
