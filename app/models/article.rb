@@ -9,7 +9,7 @@ class Article < ActiveRecord::Base
   mount_uploader :image, ArticleImageUploader
   
   scope :published, -> { where(draft: false) }
-  scope :latest, ->{ order('created_at asc')}
+  scope :latest, ->{ order('created_at desc')}
   
   def publication_date
     self.created_at.to_formatted_s(:long_ordinal)
