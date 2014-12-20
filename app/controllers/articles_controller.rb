@@ -46,7 +46,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    respond_with(@article)
+    redirect_to articles_path, notice: 'Article deleted'
   end
 
   # def events
