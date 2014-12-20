@@ -2,5 +2,3 @@
 * only published articles (draft == false) can be seen by all
 * new comment is only visible by article owner, all can see when it's approved
 * article's owner comment is auto approved
-
-<tt>rake doc:app</tt>.
