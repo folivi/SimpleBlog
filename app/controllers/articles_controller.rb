@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   respond_to :html, :json, :js
 
   def index
-    @articles = Article.all.includes(:tags)
+    @articles = Article.all.includes(:tags).published
     if request.get? # pour aller vite. Le search se fait en get
       unless params[:article].nil?
         puts params[:article][:tag_ids] = params[:article][:tag_ids].delete_if {|param| param.empty?}
