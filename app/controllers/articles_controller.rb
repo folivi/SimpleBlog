@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.includes(:tags).published
+    @coder = HTMLEntities.new
     if request.get? # pour aller vite. Le search se fait en get
       unless params[:article].nil?
         puts params[:article][:tag_ids] = params[:article][:tag_ids].delete_if {|param| param.empty?}

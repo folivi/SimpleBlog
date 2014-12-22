@@ -40,6 +40,7 @@ gem 'slim-rails'
 gem 'less-rails'
 gem 'ckeditor'
 gem 'redis'
+gem 'htmlentities'
 #gem 'coderay'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
