@@ -18,7 +18,7 @@
 			<%= image_tag article.image.blank? ? 'http://placehold.it/900x300' : article.image, class: 'img-responsive' %>
 	 	</div>									
 	 	<hr>
-	 	<p><%= raw CGI.unescapeHTML(truncate(raw(article.content), length: 90)) %></p>
+	 	<%= truncate raw(CGI.unescapeHTML(article.content)), lenght: 90 %>	 	
 	 	<%= link_to 'read more', article, class: 'btn btn-primary' %>
 	 	<%= render "article_owner_actions", {article: article} %>
 	 	<hr>	
