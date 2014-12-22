@@ -18,9 +18,13 @@
 			<%= image_tag article.image.blank? ? 'http://placehold.it/900x300' : article.image, class: 'img-responsive' %>
 	 	</div>									
 	 	<hr>
-	 	<%= truncate(raw(@coder.decode(article.content)), lenght: 90) %>	 	
-	 	<%= link_to 'read more', article, class: 'btn btn-primary' %>
-	 	<%= render "article_owner_actions", {article: article} %>
+	 	<div class="article-intro">
+	 		<%= raw(@coder.decode(article.content)) %>	 	
+	 	</div>
+		<div class="buttons">
+			<%= link_to 'read more', article, class: 'btn btn-primary' %>
+		 	<%= render "article_owner_actions", {article: article} %>
+		</div>
 	 	<hr>	
 		<% end %>    
 
